@@ -10,40 +10,21 @@ Delete the example before you submit.
 
 
 
-## Example — delete this
-
-### CC-99 — "The cart total is wrong"
-
-**Reproduced:** Added 2 dosas at Rs. 60 each. The cart showed
-Rs. 119.99999 instead of Rs. 130. Happened every time, on any dish with
-a price ending in .50.
-
-**Cause:** The total was being added up with plain floating point and
-never rounded, so 0.1 + 0.2 style errors showed up on screen. The
-rounding helper existed but this one place was not using it.
-
-**Fix:** Ran the total through the existing rounding helper instead of
-adding a new one, so every price on screen goes through the same path.
-
-**Checked:** Cart, checkout and the order screen all show Rs. 130 now.
-Prices without decimals still show without a trailing .00.
-
-**Time:** about 40 minutes, most of it working out that the cart and the
-order screen round in different places.
 
 
 
-## CC-0X — "<the complaint, in short>"
+## CC-02 — "Dish names and prices are hard to read in dark mode"
 
-**Reproduced:**
+**Reproduced:** When dark mode was enabled, dish names and prices were difficult to read because the text colour did not adapt to the dark theme.
 
-**Cause:**
+**Cause:** The .dish-body CSS rule used a fixed text colour instead of following the theme's text colour variable.
 
-**Fix:**
+**Fix:**I first changed the text colour to white, which improved visibility in dark mode but made the text difficult to read in light mode. I then removed the fixed colour and used the existing --ink CSS variable so the text follows the active theme.
 
-**Checked:**
+**Checked:** [ested both light and dark modes. Dish names and prices are readable in both modes.]
 
-**Time:**
+**Time:** [setting up took 10 mins this fix took 8 mins.]
+
 
 
 

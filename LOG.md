@@ -11,6 +11,16 @@ Delete the example before you submit.
 
 
 
+## CC-01-Search suggestions appear behind page elements
+**Reproduced:** Search suggestions appeared behind other page elements.
+
+**Cause:** .search-wrap had z-index: 1.
+
+**Fix:** Increased z-index to 50.
+
+**Checked:** Suggestions appeared in front and could be selected.
+
+**Time:** [15 mins wont be lying was searching foer smthng else]
 
 
 ## CC-02 — "Dish names and prices are hard to read in dark mode"

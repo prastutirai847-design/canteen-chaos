@@ -108,6 +108,10 @@ function reserveStock(items, menu) {
   items.forEach((item) => {
     const dish = next.find((d) => d.id === Number(item.dishId));
     if (!dish) return errors.push(`dish ${item.dishId} vanished`);
+    if (dish.stock < item.qty) {
+      errors.push(`Not enough stock for ${dish.name}`);
+      return;
+    }
     dish.stock -= item.qty;
   });
 

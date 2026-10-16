@@ -46,6 +46,29 @@ Delete the example before you submit.
 
 **Time:** [30 mins with ai i took help of ai cusss i want able yo find my mistakes]
 
+### CC-07  "Cancelled order didn't return stock"
+
+**Reproduced:** Cancelling an order reduced the available stock instead of restoring it.
+
+**Cause:** The `releaseStock()` function subtracted the cancelled quantity from the current stock.
+
+**Fix:** Changed the stock calculation from subtraction to addition so cancelled items are returned to the available stock.
+
+**Checked:** Tested with stock 2 and cancelled quantity 3. The resulting stock was 5.
+
+**Time:** [10 mins cuss last pb i solved was related tomthis 06 vala.]
+
+### CC-10 — "[Sorting by price is backwards]"
+
+**Reproduced:** [Price ko low-to-high sort karna tha, lekin pehle high-to-low aa raha tha. Aur high-to-low wale option mein iska ulta ho raha tha.]
+
+**Cause:** [Comparator mein a.price - b.price aur b.price - a.price ka order decide karta hai ki prices low-to-high arrange hongi ya high-to-low..]
+
+**Fix:** [price-asc mein a.price - b.price kiya, jisse negative result aane par cheaper item pehle aata hai. price-desc mein b.price - a.price kiya, jisse positive result aane par expensive item pehle aata hai. Isse dono sorting orders correct ho gaye.]
+
+**Checked:** [ested both price sorting options. Ascending displayed prices from lowest to highest, while descending displayed prices from highest to lowest..]
+
+**Time:** [10 min.]
 
 
 ## Could not fix
@@ -66,6 +89,10 @@ stuck is not.
 
 ## Extra credit
 
-Anything not on the bug log: a problem you found yourself, a test you
-wrote, or a fix you are unsure about. Same format, plus one line on how
-you noticed it.
+**How I noticed:** I noticed that the pagination function was calculating the current page's items but returning the entire list instead.
+
+**Cause:** The `paginate()` function correctly selected the current page's items using `list.slice(start, start + perPage)`, but returned `list` instead of `items`.
+
+**Fix:** I changed `items: list` to `items: items` so the function returns only the items belonging to the current page.
+
+**Checked:** Verified that the function returns the expected number of items for the current page.
